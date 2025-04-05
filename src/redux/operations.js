@@ -5,12 +5,28 @@ axios.defaults.baseURL = "https://car-rental-api.goit.global";
 
 export const fetchCars = createAsyncThunk(
   "cars/fetch",
-  async ({ page = 1 }, thunkAPI) => {
+  async (filters, thunkAPI) => {
     try {
+      const {
+        brand,
+        rentalPrice,
+        minMileage,
+        maxMileage,
+        limit,
+        page = 1, // За замовчуванням сторінка 1, якщо не передано
+      } = filters;
+
+      const params = {
+        page,
+        ...(brand && { brand }),
+        ...(rentalPrice && { rentalPrice }),
+        ...(minMileage && { minMileage }),
+        ...(maxMileage && { maxMileage }),
+        ...(limit && { limit }),
+      };
+
       const { data } = await axios.get("/cars", {
-        params: {
-          page,
-        },
+        params,
       });
       return data;
     } catch (e) {
