@@ -1,17 +1,18 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
+import s from "./HomePage.module.css";
 
-const HomePage = () => {
-  const navigate = useNavigate();
-
+const Home = () => {
   return (
-    <>
-      <h1>Home page</h1>
-      <Button size="large" color="blue" onClick={() => navigate("/catalog")}>
+    <section className={s.home}>
+      <h1 className={s.title}>Find your perfect rental car</h1>
+      <p className={s.text}>
+        Reliable and budget-friendly rentals for any journey
+      </p>
+      <Link className={s.link} to="/catalog">
         View Catalog
-      </Button>
-    </>
+      </Link>
+    </section>
   );
 };
 
-export default HomePage;
+export default Home;

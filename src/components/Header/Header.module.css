@@ -1,10 +1,37 @@
 .header {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between; /* Вирівнює лого зліва, навігацію справа */
+  align-items: center;
   border-bottom: 1px solid var(--badges);
   padding: 24px 120px;
   height: 68px;
   background: var(--badges);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoImage {
+  height: 32px;
+  margin-right: 8px;
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--main);
+}
+
+.logoAccent {
+  color: var(--button-hover);
 }
 
 .navigation {
