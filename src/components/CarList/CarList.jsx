@@ -6,9 +6,9 @@ import {
   selectTotalCars,
   selectCarsLoading,
   selectCarsError,
-  selectCurrentPage, // Імпортуємо селектор поточної сторінки
+  selectCurrentPage,
 } from "../../redux/selectors";
-import { incrementPage } from "../../redux/carsSlice"; // Імпортуємо екшен для збільшення сторінки
+import { incrementPage } from "../../redux/carsSlice";
 
 const CarList = () => {
   const dispatch = useDispatch();
@@ -16,15 +16,15 @@ const CarList = () => {
   const totalCars = useSelector(selectTotalCars);
   const loading = useSelector(selectCarsLoading);
   const error = useSelector(selectCarsError);
-  const filters = useSelector((state) => state.cars.filters); // Приклад, скоригуйте відповідно
-  const currentPage = useSelector(selectCurrentPage); // Отримуємо номер поточної сторінки зі стану
+  const filters = useSelector((state) => state.cars.filters);
+  const currentPage = useSelector(selectCurrentPage);
 
   useEffect(() => {
     dispatch(fetchCars({ ...filters, page: currentPage }));
   }, [dispatch, filters, currentPage]);
 
   const handleLoadMore = () => {
-    dispatch(incrementPage()); // Відправляємо екшен для збільшення сторінки
+    dispatch(incrementPage());
   };
 
   if (loading) {
@@ -51,7 +51,6 @@ const CarList = () => {
               <p>{car.description?.substring(0, 100)}...</p>
               <p>Rental Price: {car.rentalPrice}$ per day</p>
               <p>Mileage: {car.mileage} km</p>
-              {/* Додайте іншу необхідну інформацію про автомобіль */}
             </li>
           ))}
         </ul>

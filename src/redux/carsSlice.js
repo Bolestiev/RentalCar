@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars, fetchBrands } from "./operations"; // Імпортуємо наші асинхронні операції
+import { fetchCars, fetchBrands } from "./operations";
 
 const initialState = {
   cars: [],
@@ -26,7 +26,6 @@ const carSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Обробка fetchCars
     builder
       .addCase(fetchCars.pending, (state) => {
         state.loading = true;
@@ -34,7 +33,7 @@ const carSlice = createSlice({
       })
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.loading = false;
-        // При завантаженні наступної сторінки додаємо нові автомобілі до існуючого списку
+
         state.cars =
           state.currentPage === 1
             ? action.payload.cars
@@ -48,12 +47,11 @@ const carSlice = createSlice({
         state.totalCars = 0;
       });
 
-    // Обробка fetchBrands
     builder
       .addCase(fetchBrands.pending, (state) => {
         state.loading = true;
         state.error = null;
-        state.brands = []; // Очищаємо попередні бренди під час нового запиту
+        state.brands = [];
       })
       .addCase(fetchBrands.fulfilled, (state, action) => {
         state.loading = false;

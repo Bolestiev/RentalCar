@@ -13,11 +13,10 @@ const FilterForm = () => {
   const [rentalPrice, setRentalPrice] = useState("");
   const [minMileage, setMinMileage] = useState("");
   const [maxMileage, setMaxMileage] = useState("");
-  const [limit, setLimit] = useState(5); // Початкове значення ліміту
+  const [limit, setLimit] = useState(5);
 
   useEffect(() => {
-    // Завантажуємо список брендів при монтуванні компонента
-    dispatch({ type: "brands/fetch/pending" }); // Викликаємо вручну pending стан
+    dispatch({ type: "brands/fetch/pending" });
     fetch("https://car-rental-api.goit.global/brands")
       .then((response) => response.json())
       .then((data) =>
@@ -30,7 +29,7 @@ const FilterForm = () => {
 
   const handleFilterSubmit = (e) => {
     e.preventDefault();
-    dispatch(clearCars()); // Очищаємо попередні результати перед новим запитом
+    dispatch(clearCars());
     dispatch(
       fetchCars({
         brand,
@@ -38,7 +37,7 @@ const FilterForm = () => {
         minMileage: minMileage !== "" ? parseInt(minMileage) : undefined,
         maxMileage: maxMileage !== "" ? parseInt(maxMileage) : undefined,
         limit: limit !== "" ? parseInt(limit) : undefined,
-        page: 1, // Завжди починаємо з першої сторінки при нових фільтрах
+        page: 1,
       })
     );
   };
@@ -50,7 +49,7 @@ const FilterForm = () => {
     setMaxMileage("");
     setLimit(5);
     dispatch(clearCars());
-    dispatch(fetchCars({ limit: 5, page: 1 })); // Завантажуємо початковий список
+    dispatch(fetchCars({ limit: 5, page: 1 }));
   };
 
   return (

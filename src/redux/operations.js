@@ -13,7 +13,7 @@ export const fetchCars = createAsyncThunk(
         minMileage,
         maxMileage,
         limit,
-        page = 1, // За замовчуванням сторінка 1, якщо не передано
+        page = 1,
       } = filters;
 
       const params = {

@@ -1,7 +1,6 @@
 import React from "react";
-import FilterForm from "../../components/FilterForm/FilterForm"; // Переконайтеся, що шлях до FilterForm правильний
-import CarList from "../../components/CarList/CarList"; // Якщо у вас окремий компонент для списку автомобілів
-// Або інші необхідні імпорти
+import FilterForm from "../../components/FilterForm/FilterForm";
+import CarList from "../../components/CarList/CarList";
 
 const CatalogPage = () => {
   return (
