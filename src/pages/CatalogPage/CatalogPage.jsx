@@ -1,14 +1,12 @@
-import React from "react";
-import FilterForm from "../../components/FilterForm/FilterForm";
-import CarList from "../../components/CarList/CarList";
+import FilterCars from "../../components/FilterCars/FilterCars.jsx";
+import CarsList from "../../components/CarsList/CarsList.jsx";
 
 const CatalogPage = () => {
   return (
-    <div>
-      <h1>Catalog of Cars</h1>
-      <FilterForm />
-      <CarList />
-    </div>
+    <section>
+      <FilterCars />
+      <CarsList />
+    </section>
   );
 };
 

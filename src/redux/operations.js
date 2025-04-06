@@ -1,48 +1,51 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://car-rental-api.goit.global";
+const BASE_URL = "https://car-rental-api.goit.global/";
 
-export const fetchCars = createAsyncThunk(
-  "cars/fetch",
-  async (filters, thunkAPI) => {
+const defaultQuery = {
+  brand: "",
+  rentalPrice: "",
+  minMileage: "",
+  maxMileage: "",
+  limit: 12,
+  page: 1,
+};
+
+export const getCarsList = createAsyncThunk(
+  "get/getCarsList",
+  async (query = defaultQuery, thunkAPI) => {
     try {
-      const {
-        brand,
-        rentalPrice,
-        minMileage,
-        maxMileage,
-        limit,
-        page = 1,
-      } = filters;
-
       const params = {
-        page,
-        ...(brand && { brand }),
-        ...(rentalPrice && { rentalPrice }),
-        ...(minMileage && { minMileage }),
-        ...(maxMileage && { maxMileage }),
-        ...(limit && { limit }),
+        brand: query.brand || "",
+        rentalPrice: query.rentalPrice || "",
+        minMileage: query.minMileage || "",
+        maxMileage: query.maxMileage || "",
+        limit: query.limit || 12,
+        page: query.page || 1,
       };
 
-      const { data } = await axios.get("/cars", {
-        params,
-      });
-      return data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      const response = await axios.get(`${BASE_URL}cars/`, { params });
+
+      return { obj: response.data, query };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const fetchBrands = createAsyncThunk(
-  "brands/fetch",
-  async (_, thunkAPI) => {
+export const getCarById = createAsyncThunk(
+  "get/getCarById",
+  async (id, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/brands`);
-      return data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      const response = await axios.get(`${BASE_URL}cars/${id}`);
+
+      console.log("====================================");
+      console.log(response.data);
+      console.log("====================================");
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
