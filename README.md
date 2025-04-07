@@ -1,12 +1,57 @@
-# React + Vite
+🚗 RentalCar – Car Rental Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔎 Project Overview
 
-Currently, two official plugins are available:
+RentalCar is a frontend web app designed for a car rental service. It lets users explore vehicles, apply filters to narrow down choices, view car specifications, and book rentals. Built with React and Vite, the app leverages Redux for effective state management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✨ Key Features
 
-## Expanding the ESLint configuration
+🏠 Home Page
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Features a promotional banner with a call-to-action.
+
+🚘 Car Catalog
+
+Lists all available rental vehicles.
+
+Allows filtering by brand, price, and mileage (server-side filtering via API).
+
+Supports adding cars to a favorites list (data persists after reload).
+
+Implements infinite scroll via a "Load More" button (API pagination).
+
+📄 Car Details Page
+
+Displays detailed specifications and images of the selected vehicle.
+
+Includes a booking form.
+
+Shows a success message upon confirmation.
+
+🧭 Navigation & Routes
+
+/ — Home
+
+/catalog — Car Listings
+
+/catalog/:id — Car Detail View
+
+🧠 User Experience Enhancements
+
+Mileage is formatted with spaces (e.g., “5 000 km”).
+
+Layout and visuals follow provided UI mockups.
+
+Desktop-first design with responsive behavior where needed.
+
+🛠️ Technology Stack
+
+⚛️ React with Vite
+
+📦 Redux for state management
+
+🧭 React Router for routing
+
+🌐 Axios for API requests
+
+🎨 Styling: Flexible (CSS Modules, Styled Components, MUI, etc.)
